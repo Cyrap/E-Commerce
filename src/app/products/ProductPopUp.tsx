@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Image from 'next/image';
 interface Product {
   id: string;
   name: string;
@@ -25,7 +25,7 @@ const ProductPopup: React.FC<ProductPopupProps> = ({ product, onClose }) => {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-          <img
+          <Image
             className="rounded-md max-h-96 w-full object-cover"
             src={product.imageURL || ''} 
             alt={product.name}

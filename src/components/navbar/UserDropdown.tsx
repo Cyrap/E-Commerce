@@ -3,6 +3,7 @@ import React, { use } from "react";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
 import { useUser } from "@/context/UserContext";
 import LogoutButton from "./LogoutButton";
+import Image from "next/image";
 export default function App() {
   const user = useUser();
   const userImage = (user?.user?.photoURL);
@@ -13,7 +14,7 @@ export default function App() {
       <button 
   className="h-[3rem] w-[3rem] rounded-full overflow-hidden"
 >
-  <img 
+  <Image
     src={userImage || 'menu'} 
     className="object-cover w-full h-full" 
     alt="User"

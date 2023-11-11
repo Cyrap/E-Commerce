@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar/Navbar";
 import {doc , collection, onSnapshot, getDocs} from "firebase/firestore"
 import  {db}  from "../../store/firebase";
 import {Card} from 'antd'
+import Image from "next/image";
 import ProductPopup from './ProductPopUp'; 
 const Products = () =>{
   interface Product {
@@ -57,7 +58,7 @@ const Products = () =>{
         onClick={() => openProductPopup(product)}
       >
         <div className="transition-transform duration-1500 h-full group-hover:scale-110">
-          <img
+          <Image
             className="rounded-md w-full h-full object-cover"
             style={{ objectFit: 'cover', objectPosition: 'center' }}
             src={product.imageURL || 'your_default_image_url'}

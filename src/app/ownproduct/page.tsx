@@ -5,6 +5,7 @@ import { doc, collection, onSnapshot, getDocs, query, where } from "firebase/fir
 import { db } from "../../store/firebase";
 import ProductPopup from '@/app/products/ProductPopUp'; 
 import { useUser } from "@/context/UserContext";
+import Image from "next/image";
 const Products = () => {
   interface Product {
     id: string;
@@ -61,7 +62,7 @@ return(
       onClick={() => openProductPopup(product)}
     >
       <div className="transition-transform duration-1500 h-full group-hover:scale-110">
-        <img
+        <Image
           className="rounded-md w-full h-full object-cover"
           style={{ objectFit: 'cover', objectPosition: 'center' }}
           src={product.imageURL || 'your_default_image_url'}

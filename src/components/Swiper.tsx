@@ -7,6 +7,7 @@ import  {db}  from "@/store/firebase";
 import {Card} from 'antd'
 import ProductPopup from '../app/products/ProductPopUp'; // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Image from 'next/image'
 import 'swiper/css';
 const SwiperComponent = () =>{
     interface Product {
@@ -71,7 +72,7 @@ const SwiperComponent = () =>{
         onClick={() => openProductPopup(product)}
       >
         <div className="transition-transform duration-1500 h-full group-hover:scale-110">
-          <img
+          <Image
             className="rounded-md w-full h-full object-cover"
             style={{ objectFit: 'cover', objectPosition: 'center' }}
             src={product.imageURL || 'your_default_image_url'}

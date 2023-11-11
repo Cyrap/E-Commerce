@@ -5,7 +5,7 @@ import {useState, useEffect} from 'react';
 
 import Link from 'next/link';
 import { useUser } from '@/context/UserContext'
-
+import Image from 'next/image';
 const NewsFeed = () => {
   const user = useUser();
   const [text, setText] = useState('');
@@ -27,7 +27,7 @@ const NewsFeed = () => {
   return (
     <>
 <div className="h-screen flex flex-col items-center justify-center" style={{ background: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))', color: 'white' }}>
-  <img src="https://imgs.search.brave.com/yOpRp52oUm3Bb3KQ39kEA__KYYRkH7qI92JhA83pN9c/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNS8w/Ny8wNS8xMC8xOC90/cmVlLTgzMjA3OV82/NDAuanBn" alt="img" style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: -1 }} />
+  <Image src="https://imgs.search.brave.com/yOpRp52oUm3Bb3KQ39kEA__KYYRkH7qI92JhA83pN9c/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNS8w/Ny8wNS8xMC8xOC90/cmVlLTgzMjA3OV82/NDAuanBn" alt="img" style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: -1 }} />
   <div className="text-5xl font-bold text-center">
     <p>Welcome to our page</p>
     <div className="text-xl mt-4">
