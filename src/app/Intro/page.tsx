@@ -9,7 +9,7 @@ import Image from 'next/image';
 const NewsFeed = () => {
   const user = useUser();
   const [text, setText] = useState('');
-  const fullText = 'What are you looking for?';
+  const fullText = 'Та юу хайж байна?';
 
   useEffect(() => {
     let currentIndex = 0;
@@ -26,7 +26,7 @@ const NewsFeed = () => {
 
   return (
     <>
-  <Image src="https://imgs.search.brave.com/yOpRp52oUm3Bb3KQ39kEA__KYYRkH7qI92JhA83pN9c/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNS8w/Ny8wNS8xMC8xOC90/cmVlLTgzMjA3OV82/NDAuanBn" alt="img" width={10000} height={10000} style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: -1 }} />
+  <Image src="https://imgs.search.brave.com/yOpRp52oUm3Bb3KQ39kEA__KYYRkH7qI92JhA83pN9c/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNS8w/Ny8wNS8xMC8xOC90/cmVlLTgzMjA3OV82/NDAuanBn" alt="Menu" width={10000} height={10000} style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: -1 }} />
 <div className="h-screen bg-gray-600 flex flex-col items-center justify-center">
   <div className="text-4xl font-bold text-center">
     <p>Таны цахим худалдааны брэнд</p>
@@ -43,7 +43,7 @@ const NewsFeed = () => {
 
 
 
-    <header className="bg-blue-900 text-white py-5">
+    <header className="bg-[#266867] text-white py-5">
         <div className="container flex flex-col justify-center pl-[10vw]  mx-auto block h-[90vh]">
           <h1 className="text-3xl font-bold"> Таны цахим худалдааны орчин</h1>
           <p className="text-lg p-6"> <div> 

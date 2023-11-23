@@ -80,18 +80,21 @@ function BlurImage({ image, onClick }: { image: Product; onClick: () => void }) 
       className="cursor-pointer"
       onClick={onClick}
     >
-      <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+      <div className="overflow-hidden rounded-lg bg-[#25C2C2]">
         <Image
           alt=""
           src={image.imageURL}
-          layout="fill"
+          layout="responsive"
+          width={500} 
+          height={500} 
           objectFit="cover"
-          className={`duration-700 ease-in-out group-hover:opacity-75 ${isLoading ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0'}`}
+          className={`duration-700 ease-in-out group-hover:opacity-75 hover:scale-110 ${isLoading ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0'}`}
           onLoadingComplete={() => setLoading(false)}
         />
       </div>
       <h3 className="mt-4 text-sm text-gray-700">{image.name}</h3>
       <p className="mt-1 text-lg font-medium text-gray-900">{image.price}</p>
+      <p className="mt-1 text-lg font-medium text-gray-900">{image.description}</p>
     </div>
   );
 }

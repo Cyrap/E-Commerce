@@ -18,7 +18,7 @@ export default function App() {
   className="h-[3rem] w-[3rem] rounded-full overflow-hidden"
 >
   <Image
-    src={userImage || 'menu'} 
+    src={userImage || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5958mvxyOALrWelcizzxdX48KqChi9Vh2Sr_NETQ&s'} 
     className="object-cover w-full h-full" 
     alt="User"
     width={1000}
@@ -36,7 +36,7 @@ export default function App() {
                     'text-[#2196F3]': pathName === '/addproduct',
                   },
                 )
-              }>Add Item</p>
+              }>Бүтээгдэхүүн нэмэх</p>
             </Link>
           </li>}</DropdownItem>
         <DropdownItem key="copy">    {user?.user && <li>
@@ -48,7 +48,7 @@ export default function App() {
                     'text-[#2196F3]': pathName === '/ownproduct',
                   },
                 )
-              }>My products</p>
+              }>Миний бүтээгдэхүүн</p>
             </Link>
           </li>}</DropdownItem>
         <DropdownItem key="delete">

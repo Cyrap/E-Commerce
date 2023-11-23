@@ -19,7 +19,7 @@ const LogoutButton = () => {
   }
   return (
     <Button onClick={logOut}  color="danger" variant="bordered" startContent={<UserIcon/>}>
-    Logout
+    Гарах
     </Button>
   );
 };

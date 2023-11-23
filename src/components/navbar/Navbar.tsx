@@ -4,16 +4,20 @@ import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import UserDropdown from "./UserDropdown";
+// import Search from '../Search/Search'
 const Navbar = () => {
   const pathName = usePathname();
   const user = useUser();
 
   return (
-    <div className="bg-gray-300 z-[999999]">
-      <div className="block p-2 container mx-auto flex flex-col md:flex-row justify-between items-center" style={{ backdropFilter: 'blur(5px)', background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(27, 0, 0, 0.2), rgba(0, 0, 0, 0))' }}>
+    <div className="bg-[#FCA311] z-[999999] pr-20 pl-20">
+      <div className="block p-2 container mx-auto flex flex-col md:flex-row justify-between items-center" style={{ backdropFilter: 'blur(5px)'}}>
         <Link href='/'>
-          <h2 className="text-2xl text-white font-semibold mb-4 md:mb-0">E-commerce</h2>
+          <h2 className="text-2xl text-white font-semibold mb-4 md:mb-0">E-Commerce.mn</h2>
         </Link>
+        <div>
+        {/* <Search/> */}
+        </div>
         <ul className="flex space-x-4">
           <li>
             <Link href='/products'>
@@ -24,7 +28,7 @@ const Navbar = () => {
                     'text-[#2196F3]': pathName === '/products',
                   },
                 )
-              }>Products</p>
+              }>Бүтээгдэхүүн</p>
             </Link>
           </li>
           {!user?.user &&

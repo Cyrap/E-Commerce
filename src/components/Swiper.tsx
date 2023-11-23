@@ -55,7 +55,7 @@ const SwiperComponent = () => {
 
   return (
     <>
-      <div className="h-screen flex justify-center items-center bg-red-200">
+      <div className="h-screen flex justify-center items-center bg-[#E5E5E5]">
         <Swiper
           spaceBetween={20}
           slidesPerView={1}
