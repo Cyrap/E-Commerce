@@ -4,10 +4,13 @@ import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@ne
 import { useUser } from "@/context/UserContext";
 import LogoutButton from "./LogoutButton";
 import Image from "next/image";
+import Link from "next/link";
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
 export default function App() {
   const user = useUser();
   const userImage = (user?.user?.photoURL);
-
+  const pathName = usePathname();
   return (
     <Dropdown>
       <DropdownTrigger>
@@ -18,15 +21,37 @@ export default function App() {
     src={userImage || 'menu'} 
     className="object-cover w-full h-full" 
     alt="User"
+    width={1000}
+    height={1000}
   />
 </button>
-
       </DropdownTrigger>
       <DropdownMenu aria-label="Static Actions">
-        <DropdownItem key="new">New file</DropdownItem>
-        <DropdownItem key="copy">Copy link</DropdownItem>
-        <DropdownItem key="edit">Edit file</DropdownItem>
-        <DropdownItem key="delete" className="text-danger" color="danger">
+        <DropdownItem key="new">{user?.user && <li>
+            <Link href='/addproduct'>
+              <p className={
+                clsx(
+                  'hover:text-blue-500',
+                  {
+                    'text-[#2196F3]': pathName === '/addproduct',
+                  },
+                )
+              }>Add Item</p>
+            </Link>
+          </li>}</DropdownItem>
+        <DropdownItem key="copy">    {user?.user && <li>
+            <Link href='/ownproduct'>
+              <p className={
+                clsx(
+                  'hover:text-500',
+                  {
+                    'text-[#2196F3]': pathName === '/ownproduct',
+                  },
+                )
+              }>My products</p>
+            </Link>
+          </li>}</DropdownItem>
+        <DropdownItem key="delete">
           <LogoutButton/>
         </DropdownItem>
       </DropdownMenu>

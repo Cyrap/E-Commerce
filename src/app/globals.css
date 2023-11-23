@@ -18,7 +18,6 @@
 
 body {
   overflow-x: hidden;
-  background: rgb(27, 26, 26);
 }
 /* Set the width and color of the scrollbar track (the area behind the thumb) */
 ::-webkit-scrollbar {

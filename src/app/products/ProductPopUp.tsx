@@ -29,6 +29,8 @@ const ProductPopup: React.FC<ProductPopupProps> = ({ product, onClose }) => {
             className="rounded-md max-h-96 w-full object-cover"
             src={product.imageURL || ''} 
             alt={product.name}
+            width={1000}
+            height={500}
           />
           <h2 className="text-2xl font-bold mt-4">{product.name}</h2>
           <p className="text-lg">{product.description}</p>

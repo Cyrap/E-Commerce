@@ -1,10 +1,12 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
-
-module.exports = nextConfig
-module.exports = { 
-	reactStrictMode: true, 
-	eslint: { 
-	ignoreDuringBuilds: true, 
-	}, 
-}
+const nextConfig = {
+	images: {
+	  domains: [ 'tailwindui.com','static.vecteezy.com','imgs.search.brave.com', 'lh3.googleusercontent.com', 'firebasestorage.googleapis.com'],
+	},
+	reactStrictMode: true,
+	eslint: {
+	  ignoreDuringBuilds: true,
+	},
+  };
+  
+  module.exports = nextConfig;
+  

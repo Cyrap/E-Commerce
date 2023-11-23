@@ -1,109 +1,113 @@
-
 'use client'
-import {useState,useEffect} from "react"
-import Navbar from "@/components/navbar/Navbar";
-import {doc , collection, onSnapshot, getDocs} from "firebase/firestore"
-import  {db}  from "@/store/firebase";
-import {Card} from 'antd'
-import ProductPopup from '../app/products/ProductPopUp'; // Import Swiper React components
+import { useState, useEffect } from 'react';
+import Navbar from '@/components/navbar/Navbar';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '@/store/firebase';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Image from 'next/image'
 import 'swiper/css';
-const SwiperComponent = () =>{
-    interface Product {
-      id: string;
-      name: string;
-      description: string;
-      price: number;
-      imageURL?: string; 
-    }  
-    const [productList, setProductList] = useState<Product[]>([]);
-      const [selectedProduct, setSelectedProduct] = useState(null);
-      const productCollectionRef = collection(db,"products");
-    useEffect(() =>{
-      const getProductList = async () =>{
-          try{
-              const data  = await getDocs(productCollectionRef);
-              const filteredData : any = data.docs.map((doc) => ({
-                  ...doc.data(),
-                  id: doc.id,
-                }));
-                setProductList(filteredData);
-                console.log(filteredData);
-          }catch(err){
-              console.error(err);
-          }
-      }
-  
-  
-      getProductList();
-    },[])
-  
-    console.log(productList);
-    const openProductPopup = (product:any) => {
-      setSelectedProduct(product);
-    };
-  
-    const closeProductPopup = () => {
-      setSelectedProduct(null);
-    };
-  
+import ProductPopup from '../app/products/ProductPopUp';
+import Image from 'next/image';
 
-
-
-
-
-
-    return(
-      <>
-      mjhbjh,mgbjkhbyjk
-<div className="h-[100vh] flex justify-center items-center" >
-<Swiper
-      spaceBetween={50}
-      slidesPerView={4}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
-  {productList.map((product) => (
-        <SwiperSlide key={product.id}>
-    <div key={product.id} className="flex flex-col items-center">
-      <div
-        className="flex flex-col h-50 cursor-pointer"
-        onClick={() => openProductPopup(product)}
-      >
-        <div className="transition-transform duration-1500 h-full group-hover:scale-110">
-          <Image
-            className="rounded-md w-full h-full object-cover"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-            src={product.imageURL || 'your_default_image_url'}
-            alt={product.name}
-          />
-        </div>
-      </div>
-      <div className="mt-1 text-center">{product.price}</div>
-      <div className="font-bold text-center">{product.description}</div>
-      </div>
-      </SwiperSlide>
-    
-    
-   
-  ))}
-         </Swiper>
-  
-  {selectedProduct && (
-    <ProductPopup product={selectedProduct} onClose={closeProductPopup} />
-  )}
-  
- 
-
-</div>
-
-    </>
-  
-
-  
-
-    )
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  imageURL: string;
 }
+
+const SwiperComponent = () => {
+  const [isLoading, setLoading] = useState(true);
+  const [productList, setProductList] = useState<Product[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const productCollectionRef = collection(db, 'products');
+
+  useEffect(() => {
+    const getProductList = async () => {
+      try {
+        const data = await getDocs(productCollectionRef);
+        const filteredData: any = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setProductList(filteredData);
+        console.log(filteredData);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getProductList();
+  }, []);
+
+  const openProductPopup = (product: any) => {
+    setSelectedProduct(product);
+  };
+
+  const closeProductPopup = () => {
+    setSelectedProduct(null);
+  };
+
+  const handleImageLoadingComplete = () => {
+    console.log('Image loading complete');
+    setLoading(false);
+  };
+
+  return (
+    <>
+      <div className="h-screen flex justify-center items-center bg-red-200">
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={1}
+          breakpoints={{
+            600: {
+              slidesPerView: 2,
+            },
+            658: {
+              slidesPerView: 3,
+            },
+            924: {
+              slidesPerView: 3,
+            },
+            1100: {
+              slidesPerView: 4,
+            },
+            1400: {
+              slidesPerView: 5,
+            },
+            
+          }}
+          onSlideChange={() => console.log('slide change')}
+          onSwiper={(swiper) => console.log(swiper)}
+        >
+          {productList.map((product) => (
+            <SwiperSlide key={product.id}>
+              <div className=" rounded-2xl	relative h-[50vh] overflow-hidden group border border-white border-opacity-30" onClick={() => openProductPopup(product)}>
+                {(
+                  <Image
+                    alt={product.name}
+                    src={product.imageURL}
+                    layout="fill"
+                    objectFit="cover"
+                    className={`duration-700 ease-in-out group-hover:opacity-96 ${isLoading ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0'}`}
+                    onLoadingComplete={handleImageLoadingComplete}
+                  />
+                )}
+                <div className="absolute bottom-0 left-0 right-0 text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <h3 className="text-sm text-white">{product.name}</h3>
+                  <p className="mt-1 text-lg font-medium text-white">${product.price}</p>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {selectedProduct && (
+          <ProductPopup product={selectedProduct} onClose={closeProductPopup} />
+        )}
+      </div>
+    </>
+  );
+};
 
 export default SwiperComponent;
